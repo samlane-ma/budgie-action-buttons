@@ -1,0 +1,9 @@
+[Plugin]
+Module=com.github.samlane-ma.budgie-action-buttons
+Builtin=false
+Name=Action Buttons
+Description=Customizable action buttons for the Raven panel
+Authors=Sam Lane
+Copyright=Ubuntu Budgie Developers
+Website=https://github.com/samlane-ma/raven-action-buttons
+Icon=action-buttons-symbolic
