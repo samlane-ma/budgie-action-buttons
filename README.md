@@ -1,4 +1,4 @@
-# Raven Action Buttons
+# Budgie Action Buttons
 
 ## User Customizable buttons for the Budgie Desktop Raven panel
 
