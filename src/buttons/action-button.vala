@@ -7,9 +7,11 @@ public class ActionButton : Gtk.Button {
     protected string? toggle_image = null;
     protected Gtk.Label button_label;
     protected string button_text;
+    protected bool small_size = false;
     protected bool can_toggle = false;
     protected bool is_clicked = false;
     protected bool is_builtin = false;
+    protected Gtk.IconSize icon_size = Gtk.IconSize.LARGE_TOOLBAR;
 
     protected string? default_action = null;
     protected string? untoggled_action = null;
@@ -23,7 +25,7 @@ public class ActionButton : Gtk.Button {
         button_label.set_halign(Gtk.Align.START);
         get_style_context().add_class("action_button");
 
-        button_image = new Gtk.Image.from_icon_name(default_image, Gtk.IconSize.LARGE_TOOLBAR);
+        button_image = new Gtk.Image.from_icon_name(default_image, icon_size);
 
         button_grid.attach(button_image, 0, 0, 1, 1);
         button_grid.attach(new Gtk.Label(""), 0, 1, 2, 1);
@@ -35,7 +37,7 @@ public class ActionButton : Gtk.Button {
         clicked.connect(on_button_clicked);
 
         set_can_focus(false);
-        set_relief(Gtk.ReliefStyle.NONE);
+        //set_relief(Gtk.ReliefStyle.NONE);
 
         show_all();
     }
@@ -45,13 +47,13 @@ public class ActionButton : Gtk.Button {
             is_clicked = can_toggle;
             button_default_action();
             if (toggle_image != null) {
-                button_image.set_from_icon_name(toggle_image, Gtk.IconSize.LARGE_TOOLBAR);
+                button_image.set_from_icon_name(toggle_image, icon_size);
             }
         } else {
             is_clicked = false;
             button_untoggled_action();
             if (toggle_image != null) {
-                button_image.set_from_icon_name(default_image, Gtk.IconSize.LARGE_TOOLBAR);
+                button_image.set_from_icon_name(default_image, icon_size);
             }
         }
     }
@@ -90,6 +92,27 @@ public class ActionButton : Gtk.Button {
             Process.spawn_command_line_async(command);
         } catch (SpawnError e) {
             warning("Failed to run %s: %s", command, e.message);
+        }
+    }
+
+    public void set_small_button(bool small) {
+        if (small) {
+            icon_size = Gtk.IconSize.DND;
+            button_grid.remove(button_image);
+            remove(button_grid);
+            add(button_image);
+            set_tooltip_text(button_text.strip());
+        } else {
+            icon_size = Gtk.IconSize.LARGE_TOOLBAR;
+            remove(button_image);
+            button_grid.attach(button_image, 0, 0, 1, 1);
+            add(button_grid);
+            has_tooltip = false;
+        }
+        if (!can_toggle || !is_clicked) {
+            button_image.set_from_icon_name(default_image, icon_size);
+        } else {
+            button_image.set_from_icon_name(toggle_image, icon_size);
         }
     }
 }

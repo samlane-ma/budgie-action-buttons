@@ -12,7 +12,16 @@ ActionButtonsDependencies = [
     meson.get_compiler('c').find_library('m', required: false)
 ]
 
+ActionButtonsValaArgs = [
+'--pkg=config',
+'--vapidir=' + VAPI_DIR,
+]
+
 shared_library(meson.project_name(),
                ActionButtonsSources,
+               vala_args: ActionButtonsValaArgs,
+               include_directories: config_inc_dir,
                dependencies: ActionButtonsDependencies,
                install: true, install_dir: LIB_INSTALL_DIR)
+
+subdir('editor')

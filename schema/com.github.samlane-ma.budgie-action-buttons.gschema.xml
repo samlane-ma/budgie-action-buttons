@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
   <schema id="com.github.samlane-ma.budgie-action-buttons">
-    <key type="b" name="settings">
+    <key type="b" name="compact-buttons">
       <default>true</default>
-      <summary>Settings</summary>
-      <description>Settings</description>
+      <summary>Use Compact Buttons</summary>
+      <description>Use compact (icon only) buttons</description>
     </key>
   </schema>
 </schemalist>

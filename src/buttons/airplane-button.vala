@@ -15,10 +15,12 @@ public class AirplaneActionButton : ActionButton {
         is_builtin = true;
         set_toggle_icon("route-transit-airplane-symbolic");
         try {
-            rfkill = Bus.get_proxy_sync(BusType.SESSION, "org.gnome.SettingsDaemon.Rfkill",
-            "/org/gnome/SettingsDaemon/Rfkill");
+            rfkill = Bus.get_proxy_sync(BusType.SESSION,
+                     "org.gnome.SettingsDaemon.Rfkill",
+                     "/org/gnome/SettingsDaemon/Rfkill");
             enabled = true;
         } catch (Error e) {
+            message("Unable to connect get session bus: %s", e.message);
             enabled = false;
         }
     }
