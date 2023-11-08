@@ -14,7 +14,7 @@ public class ActionButtonBox : Gtk.FlowBox {
         ActionButton button_2 = new AirplaneActionButton();
         ActionButton button_3 = new ClipActionButton();
         ActionButton button_4 = new ActionButton("   Home", "folder-symbolic");
-        button_4.set_default_action("nemo ~/");
+        button_4.set_default_action("nemo /home/sam");
         ActionButton button_5 = new ActionButton("Google Drive", "folder-google-drive-symbolic");
         button_5.set_default_action("xdg-open https://drive.google.com");
         ActionButton button_6 = new ActionButton("Zoom Screen", "zoom-symbolic");

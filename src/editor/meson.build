@@ -1,9 +1,11 @@
 EditorSources = [
-    'editor.vala'
+    'editor.vala',
+    'iconpicker.vala',
 ]
 
 EditorDependencies = [
     dependency('gtk+-3.0', version: '>=3.18'),
+    dependency('gee-0.8'),
 ]
 
 EditorValaArgs = [

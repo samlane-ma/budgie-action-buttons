@@ -1,4 +1,3 @@
-
 public class ActionButton : Gtk.Button {
 
     protected Gtk.Grid button_grid;

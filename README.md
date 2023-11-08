@@ -2,7 +2,7 @@
 
 ## User Customizable buttons for the Budgie Desktop Raven panel
 
-### WIP - Currently just a shell of a project
+### WIP - Currently non-functional
 
 Dependencies
 
